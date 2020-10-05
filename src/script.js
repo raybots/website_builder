@@ -128,8 +128,6 @@ $(".export-button").click(function () {
     $(".builder-element").each(function (index, element) {
       var component = $(this).data("component");
 
-      console.log(component.id);
-
       // adds the component ID to the array
       elements.push(component.id);
     });
@@ -149,33 +147,28 @@ $(".import-button").click(function () {
     if (elements == "null" || elements == "") {
       alert("nothing entered");
     } else {
-      console.log("input");
-      console.log(elements);
 
       elementArray = elements.split(",");
 
-      console.log(elementArray);
+      if (elementArray.length < 1)
+        return;
 
-      if (elementArray.length > 0) {
-        for (var i = 0; i < elementArray.length; i++) {
-          console.log("id of component");
-          console.log(elementArray[i]);
+      for (var i = 0; i < elementArray.length; i++) {
 
-          var exportid = elementArray[i];
+        var exportid = elementArray[i];
 
-          // finds the relevant component
-          var item = componentData.find((item) => item.id == exportid);
+        // finds the relevant component
+        var item = componentData.find((item) => item.id == exportid);
 
-          // if the component is found, add it to the page
-          if (item != undefined) {
-            elem = $(item.html);
+        // if the component is found, add it to the page
+        if (item != undefined) {
+          elem = $(item.html);
 
-            $(".preview-instructons").remove();
+          $(".preview-instructons").remove();
 
-            applyBuilderClass(elem);
+          applyBuilderClass(elem);
 
-            $(".preview").append(elem);
-          }
+          $(".preview").append(elem);
         }
       }
     }
