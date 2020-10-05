@@ -113,6 +113,34 @@ for (var i = 0; i < componentData.length; i++) {
 
 };
 
+function importPage(elements)
+{
+
+  elementArray = elements.split(",");
+
+  if (elementArray.length < 1)
+    return;
+
+  for (var i = 0; i < elementArray.length; i++) {
+
+    var exportid = elementArray[i];
+
+    // finds the relevant component
+    var item = componentData.find((item) => item.id == exportid);
+
+    // if the component is found, add it to the page
+    if (item != undefined) {
+      elem = $(item.html);
+
+      $(".preview-instructons").remove();
+
+      applyBuilderClass(elem);
+
+      $(".preview").append(elem);
+    }
+  }  
+}
+
 function addMenuEvents()
 {
 // meny button functionality
@@ -151,32 +179,11 @@ $(".import-button").click(function () {
     }
     else
     {
-
-      elementArray = elements.split(",");
-
-      if (elementArray.length < 1)
-        return;
-
-      for (var i = 0; i < elementArray.length; i++) {
-
-        var exportid = elementArray[i];
-
-        // finds the relevant component
-        var item = componentData.find((item) => item.id == exportid);
-
-        // if the component is found, add it to the page
-        if (item != undefined) {
-          elem = $(item.html);
-
-          $(".preview-instructons").remove();
-
-          applyBuilderClass(elem);
-
-          $(".preview").append(elem);
-        }
-      }
+        importPage(elements);
     }
-  } else {
+  } 
+  else
+  {
     alert("You can only import on a blank page.");
   }
 });
