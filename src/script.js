@@ -175,17 +175,16 @@ $(".import-button").click(function () {
     
     if (elements == "null" || elements == "") {
       alert("nothing entered");
-
     }
     else
     {
         importPage(elements);
     }
   } 
-  else
-  {
+  else {
     alert("You can only import on a blank page.");
   }
+  
 });
 }
 
