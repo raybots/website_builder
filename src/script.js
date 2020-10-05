@@ -144,9 +144,13 @@ $(".import-button").click(function () {
 
   if ($(".builder-element").length == 0) {
     let elements = prompt("Enter the exported code from a previous project");
+    
     if (elements == "null" || elements == "") {
       alert("nothing entered");
-    } else {
+
+    }
+    else
+    {
 
       elementArray = elements.split(",");
 
