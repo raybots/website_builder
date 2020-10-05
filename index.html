@@ -1,0 +1,61 @@
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="src/script.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">     
+
+<link rel="stylesheet" type="text/css" href="src/style.css"> 
+</head>
+
+<body>
+
+<div class="builder-menu row bg-dark container-fluid">
+  <div class="menu-title col-6">
+    Once you add a component, you can edit the text inside.
+  </div>
+
+    <div class="menu-section col-6">
+  <button type="button" class="btn btn-danger btn-sm remove-button"><span class="material-icons">
+undo
+</span>Remove last component</button>
+
+  <button type="button" class="btn btn-info btn-sm export-button"><span class="material-icons">
+qr_code
+</span>Export</button>
+
+    <button type="button" class="btn btn-info btn-sm import-button"><span class="material-icons">
+input
+</span>Import</button>    
+   </div>
+  
+</div>
+
+
+<div class="builder-container row">
+
+  <div class="sidebar col-2 bg-light">
+    <div class="sidebar-header">
+      Add a component
+    </div>
+
+  </div>
+
+  <div class="preview-container container-fluid">
+
+    <div class="preview">
+
+      <div class="preview-instructons">The preview will appear here. You can edit the text inside the components.</div>
+
+    </div>
+
+    <div class="preview-end"></div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
