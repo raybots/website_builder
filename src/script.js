@@ -70,6 +70,51 @@ function applyBuilderClass(elem) {
   elem.addClass("builder-element");
 }
 
+function generateSidebar()
+{
+
+// generating the sidebar
+for (var i = 0; i < componentData.length; i++) {
+  var component = componentData[i];
+
+  // the HMTL of the cards
+  var cardHTML = "";
+  cardHTML += "<div class = 'sidebar-card'>";
+  cardHTML += "<span class='material-icons'>" + component.icon + "</span>";
+  cardHTML +=
+    "<span class = 'sidebar-card-title'><b>" + component.name + "</b></span>";
+  cardHTML += "</br>" + component.description;
+  cardHTML += "</div>";
+
+  var cardjquery = $(cardHTML);
+
+  cardjquery.data("component", component);
+
+  // when the card is clicked, it will add the component HTML to the page
+  cardjquery.click(function () {
+    $(".preview-instructons").remove();
+
+    // add the element to the preview
+    var elem = $($(this).data("component").html);
+
+    // adds the component details to the element
+    elem.data("component", $(this).data("component"));
+
+    applyBuilderClass(elem);
+
+    $(".preview").append(elem);
+    window.scrollTo(0, document.body.scrollHeight);
+  });
+
+  // added the cards to the menu
+
+  $(".sidebar").append(cardjquery);
+}
+
+};
+
+function addMenuEvents()
+{
 // meny button functionality
 $(".remove-button").click(function () {
   console.log($(".builder-element").last());
@@ -138,52 +183,11 @@ $(".import-button").click(function () {
     alert("You can only import on a blank page.");
   }
 });
-
-function generateSidebar()
-{
-
-// generating the sidebar
-for (var i = 0; i < componentData.length; i++) {
-  var component = componentData[i];
-
-  // the HMTL of the cards
-  var cardHTML = "";
-  cardHTML += "<div class = 'sidebar-card'>";
-  cardHTML += "<span class='material-icons'>" + component.icon + "</span>";
-  cardHTML +=
-    "<span class = 'sidebar-card-title'><b>" + component.name + "</b></span>";
-  cardHTML += "</br>" + component.description;
-  cardHTML += "</div>";
-
-  var cardjquery = $(cardHTML);
-
-  cardjquery.data("component", component);
-
-  // when the card is clicked, it will add the component HTML to the page
-  cardjquery.click(function () {
-    $(".preview-instructons").remove();
-
-    // add the element to the preview
-    var elem = $($(this).data("component").html);
-
-    // adds the component details to the element
-    elem.data("component", $(this).data("component"));
-
-    applyBuilderClass(elem);
-
-    $(".preview").append(elem);
-    window.scrollTo(0, document.body.scrollHeight);
-  });
-
-  // added the cards to the menu
-
-  $(".sidebar").append(cardjquery);
 }
-
-};
 
 $('document').ready(function(){
 
   generateSidebar();
-  
+  addMenuEvents();
+
 });
